@@ -43,6 +43,7 @@ Initilal visualization for Chicgao:
     - [Java heap space](https://kb.tableau.com/articles/issue/error-system-error-java-heap-space-when-exporting-an-output-or-running-a-tableau-prep-flow) problem when dataset is too large 
 
 ## Code Example / Cleaning Flow: 
+link to the script used in the flow: https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/5_ETL/tabpy_pull_crimes.py
 ![tabpy_prep_pull_crimes_flow](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//crime_prep_flow.png?raw=true)
 
 
