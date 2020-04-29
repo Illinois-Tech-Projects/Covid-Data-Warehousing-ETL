@@ -1,5 +1,6 @@
 # Covid-Data-Warehousing-ETL
-# [Trello board](https://trello.com/b/YDYSB3Xt/group-1-project) • [Google Slides](https://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharinghttps://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharing)
+# [Trello board](https://trello.com/b/YDYSB3Xt/group-1-project) • [Google Slides](https://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharinghttps://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharing) • [Tableau Viz](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/raw/master/6_reporting/all_reporting_tableau_files.zip)
+
 
 ## Story Telling:
 1. Does responsive time effect the number of confirmed cases? 
