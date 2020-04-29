@@ -1,5 +1,5 @@
 # Covid-Data-Warehousing-ETL
-# [Trello board](https://trello.com/b/YDYSB3Xt/group-1-project) • [Google Slides](https://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharinghttps://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharing) • [Download Tableau Viz](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/raw/master/6_reporting/all_reporting_tableau_files.zip) • [Download ETL]('https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/raw/master/6_reporting/ETLs_compressed.zip')
+# [Trello board](https://trello.com/b/YDYSB3Xt/group-1-project) • [Google Slides](https://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharinghttps://docs.google.com/presentation/d/147y-GaIxfaKtQoGj5RWp1g32IdezM2v8BWCAeLH_Nbs/edit?usp=sharing) • [Download Tableau Viz](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/raw/master/6_reporting/all_reporting_tableau_files.zip) • [Download ETL](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/raw/master/6_reporting/ETLs_compressed.zip)
 
 
 ## Story Telling:
