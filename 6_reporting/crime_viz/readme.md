@@ -22,7 +22,7 @@
 
 Initilal visualization for Chicgao: 
 
-![Initial_Chicago_Viz](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//Tableau%20-%20alexw-crime-covid%202020-04-24%2023-06-59.png?raw=true)
+![Initial_Chicago_Viz](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/Tableau%20-%20alexw-crime-covid%202020-04-24%2023-06-59.png?raw=true)
 
 ------
 
@@ -32,7 +32,7 @@ Initilal visualization for Chicgao:
     1. Getting most updated data from nytimes. 
     2. SQL generate US Daily New Cases Summary
 
-![pentaho_job.png](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//pentaho_job.png?raw=true)
+![pentaho_job.png](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/pentaho_job.png?raw=true)
 
 ## Tableau Prep
   - pro: 
@@ -43,26 +43,31 @@ Initilal visualization for Chicgao:
     - [Java heap space](https://kb.tableau.com/articles/issue/error-system-error-java-heap-space-when-exporting-an-output-or-running-a-tableau-prep-flow) problem when dataset is too large 
 
 ## Code Example / Cleaning Flow: 
-link to the script used in the flow: https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/5_ETL/tabpy_pull_crimes.py
-![tabpy_prep_pull_crimes_flow](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//crime_prep_flow.png?raw=true)
+Download python script: [here](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/5_ETL/scripts/tabpy_pull_crimes.py).
+![tabpy_prep_pull_crimes_flow](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/crime_prep_flow.png?raw=true)
 
 
 ## Crime Data Cleaning Stage 1: getting data
 we only needed three attribute `date_of_occurrence`, `categorry` and `city`
 
 
-![pulling_functions](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//tabpy.png?raw=true)
+![pulling_functions](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/tabpy.png?raw=true)
 
 
 
 ## Crime Data Cleaning Stage 2: category regrouping/replacing
-![regrouping_prep.png](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//regrouping_prep.png?raw=true)
+![regrouping_prep.png](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/regrouping_prep.png?raw=true)
 
-```Last step was to union crime data and US corona new cases together so we can compare them. ```
+# Last step was to union crime data and US corona new cases together so we can compare them.
 
-## Visualization 
+## Tableau Visualization 
+
+![Theft Category Comparison](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/theft_category.png?raw=true)
+
+
+
 [Tableau Public](https://public.tableau.com/views/ytd_crime/Dashboard2?:display_count=y&publish=yes&:origin=viz_share_link)
 
 Video Preview
-[![](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img//crime_vs_corona.png?raw=true)](https://i.imgur.com/5vq01cA.mp4)
+[![](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/crime_vs_corona.png?raw=true)](https://i.imgur.com/5vq01cA.mp4)
 
