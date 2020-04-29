@@ -623,8 +623,8 @@ CREATE TABLE itmd526.nCoV_beoutbreakprepared
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
+      <evaluation>N</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
     <hop>
       <from>clean db</from>
@@ -647,85 +647,18 @@ CREATE TABLE itmd526.nCoV_beoutbreakprepared
   </hops>
   <notepads>
     <notepad>
-      <note>
+      <note>*** open [git pull] script and change DATA_DIR env *** 
 
-DROP TABLE IF EXISTS COVID19_country_day;
+DATA_DIR='path_to/Covid-Data-Warehousing-ETL/2_Datasets'
 
-CREATE TABLE COVID19_country_day
-AS
-SELECT TRIM(country_region) AS country, STR_TO_DATE(date_reported, '%m-%d-%Y') AS date_reported, IFNULL(SUM(cnt_confirmed),0) AS cnt_cum_confirmed
-  FROM COVID19_daily_report 
- WHERE 1=1
-   AND country_region IS NOT NULL
- GROUP BY country_region, STR_TO_DATE(date_reported, '%m-%d-%Y')
-;
+For example(absolute path): 
+'/Users/alexw/Desktop/Covid-Data-Warehousing-ETL/2_Datasets'
 
-DROP TABLE IF EXISTS COVID19_country_day_seq;
-
-/* SEQ generation */
-CREATE TABLE COVID19_country_day_seq
-AS
-SELECT TRIM(a.country) AS country, a.date_reported, a.cnt_cum_confirmed, COUNT(*) country_seq
-  FROM COVID19_country_day a, COVID19_country_day b
- WHERE a.country = b.country
-   AND a.date_reported >= b.date_reported
- GROUP BY a.country, a.date_reported, a.cnt_cum_confirmed; 
-
-DROP TABLE IF EXISTS COVID19_country_day_summary;
-
-/* Lead/Lag : Windows/Analytic Functions */
-CREATE TABLE COVID19_country_day_summary
-AS
-SELECT a.*, (a.cnt_cum_confirmed - IFNULL(b.cnt_cum_confirmed,0)) AS cnt_new_confirmed
-  FROM COVID19_country_day_seq a
-  LEFT OUTER JOIN COVID19_country_day_seq b
-    ON a.country = b.country
-   AND a.country_seq = b.country_seq+1
- ORDER BY 1,2,4
-;   
-  
-
-/* Build N-day rolling to smooth out the visualization and find trend */
-DROP TABLE IF EXISTS COVID19_country_week_summary;
-
-/* Lead/Lag : Windows/Analytic Functions */
-CREATE TABLE COVID19_country_week_summary
-AS
-SELECT a.country, a.date_reported, a.cnt_cum_confirmed, SUM(b.cnt_new_confirmed) AS cnt_week_confirmed
-  FROM COVID19_country_day_summary a
-  LEFT OUTER JOIN COVID19_country_day_summary b
-    ON a.country = b.country
-   AND b.country_seq BETWEEN a.country_seq-6 AND a.country_seq
- GROUP BY a.country, a.date_reported, a.cnt_cum_confirmed;
-;   
-  
-  
-/* For Logarithmic Scale purpose */
-DELETE 
-  FROM COVID19_country_day_summary
- WHERE cnt_cum_confirmed &lt;= 0
-;
-
-DELETE 
-  FROM COVID19_country_day_summary
- WHERE cnt_new_confirmed &lt;= 0
-;
-
-/* For Logarithmic Scale purpose */
-DELETE 
-  FROM COVID19_country_week_summary
- WHERE cnt_cum_confirmed &lt;= 0
-;
-
-DELETE 
-  FROM COVID19_country_week_summary
- WHERE cnt_week_confirmed &lt;= 0
-;
 </note>
-      <xloc>640</xloc>
-      <yloc>16</yloc>
-      <width>1054</width>
-      <heigth>1135</heigth>
+      <xloc>32</xloc>
+      <yloc>352</yloc>
+      <width>440</width>
+      <heigth>130</heigth>
       <fontname>OperatorMono-Book</fontname>
       <fontsize>13</fontsize>
       <fontbold>N</fontbold>
@@ -742,19 +675,45 @@ DELETE
       <drawshadow>Y</drawshadow>
     </notepad>
     <notepad>
-      <note>*** open [git pull] script and change DATA_DIR env *** 
+      <note>
+/* # sequence  by states */
+DROP TABLE IF EXISTS `nytimes_covid_states_day_seq`;
+CREATE TABLE `nytimes_covid_states_day_seq`
+AS
+SELECT *, RANK() OVER( PARTITION BY `state` ORDER BY `date`) AS seq
+FROM `nytimes_covid_states`;
 
-DATA_DIR='path_to/Covid-Data-Warehousing-ETL/2_Datasets'
 
-For example(absolute path): 
-'/Users/alexw/Desktop/Covid-Data-Warehousing-ETL/2_Datasets'
+/* # us_new_cases summary */
+/* If null should replace with the first day total us cases * /
+CREATE OR REPLACE VIEW us_new_cases_summary as
+SELECT DISTINCT `date`, 
+IFNULL(sum(new_cases) over (PARTITION BY date), 
+(SELECT sum(`cases`) FROM nytimes_covid_states_day_seq where seq=1) ) AS us_new_cases, 
+'US' AS city
+FROM nytime_daily_state_newcases;
+SELECT * FROM us_new_cases_summary;
 
+/* Todays cases  by states summary*/
+DROP TABLE IF EXISTS `nytimes_covid_us_to_date`;
+CREATE TABLE `nytimes_covid_us_to_date`
+AS
+SELECT 
+a.state, 
+a.`date`, 
+a.cases
+FROM itmd526.nytimes_covid_states_day_seq a
+JOIN (
+select state, max(seq) as max_seq 
+from `nytimes_covid_states_day_seq`
+GROUP BY state) b
+WHERE a.seq = b.max_seq AND a.state = b.state;
 </note>
-      <xloc>32</xloc>
-      <yloc>448</yloc>
-      <width>440</width>
-      <heigth>130</heigth>
-      <fontname>OperatorMono-Book</fontname>
+      <xloc>560</xloc>
+      <yloc>32</yloc>
+      <width>588</width>
+      <heigth>554</heigth>
+      <fontname>.AppleSystemUIFont</fontname>
       <fontsize>13</fontsize>
       <fontbold>N</fontbold>
       <fontitalic>N</fontitalic>
