@@ -65,8 +65,7 @@ we only needed three attribute `date_of_occurrence`, `categorry` and `city`
 ![Theft Category Comparison](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/theft_category.png?raw=true)
 
 
-
-[Tableau Public](https://public.tableau.com/views/ytd_crime/Dashboard2?:display_count=y&publish=yes&:origin=viz_share_link)
+# [Tableau Public](https://public.tableau.com/views/ytd_crime/Dashboard2?:display_count=y&publish=yes&:origin=viz_share_link)
 
 Video Preview
 [![](https://github.com/Illinois-Tech-Projects/Covid-Data-Warehousing-ETL/blob/master/7_Assets/img/crime/crime_vs_corona.png?raw=true)](https://i.imgur.com/5vq01cA.mp4)
